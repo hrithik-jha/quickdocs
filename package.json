@@ -1,0 +1,28 @@
+{
+  "name": "quickdocs",
+  "version": "1.0.0",
+  "description": "Online real-time document editing",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hrithik-jha/quickdocs.git"
+  },
+  "author": "Hrithik Jha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hrithik-jha/quickdocs/issues"
+  },
+  "homepage": "https://github.com/hrithik-jha/quickdocs#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "express": "^4.17.1",
+    "mongoose": "^5.7.0",
+    "nodemon": "^1.19.2",
+    "querystring": "^0.2.0",
+    "request": "^2.88.0"
+  }
+}
