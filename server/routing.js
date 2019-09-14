@@ -2,10 +2,13 @@ const express       = require('express');
 const app           = express();
 const cookieParser  = require('cookie-parser');
 const bodyParser    = require('body-parser'); 
+const path          = require('path');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(cookieParser());
+
+app.use(express.static(path.join(__dirname, 'static')));
 
 var Doc = require('./database');
 var Auth = require('./auth');
