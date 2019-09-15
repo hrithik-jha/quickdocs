@@ -13,6 +13,12 @@ app.use(express.static(path.join(__dirname, 'static')));
 var Doc = require('./database');
 var Auth = require('./auth');
 
+function trimmedCookie(user) {
+    var pos = user.indexOf("user=");
+    var userString = user.substring(pos + 5, user.length);
+    return userString;
+}
+
 module.exports = function(app) {
     app.get("/", (req, res) => {
         res.send("You at the base.");
@@ -26,19 +32,15 @@ module.exports = function(app) {
         //console.log(req.body.name + " " + req.body.pass);
         var usern = req.body.usern;
         var passw = req.body.passw;
-        var response = Auth.checkCreds(usern, passw, res);
-        //res.send(response);
-        //console.log(response);
-        let sess = {
-            user: usern,
-        };
-        //res.clearCookie('user');
+        //var response = Auth.checkCreds(usern, passw);
+
         res.cookie("user", usern);
         console.log("Cookie creation done.");
-        console.log(req.cookies);
+        
         var cook = String(req.headers.cookie);
-        console.log(cook.substring(0, 5));
-        res.send();
+        res.send(trimmedCookie(cook));
+        //var status = Auth.checkCreds(usern, passw);
+        //console.log(status);
     });
 
     app.get("/register", (req, res) => {
@@ -49,7 +51,7 @@ module.exports = function(app) {
         //console.log(req.body.name + " " + req.body.pass);
         var usern = req.body.usern;
         var passw = req.body.passw;
-        res.send(insertCreds(usern, passw));
+        res.send(Auth.insertCreds(usern, passw));
     });
 
     app.get("/document", (req, res) => {
@@ -61,7 +63,18 @@ module.exports = function(app) {
     });
 
     app.post("/document", (req, res) => {
-        var myData = new Doc(req.body);
+        var doc = String(req.body.docs);
+        var cook = req.headers.cookie;
+        var user = trimmedCookie(cook);
+        var timen = String(Date.now());
+        console.log(req.body)
+        var coll = {
+            usern: user,
+            docs: doc,
+            time: timen,
+        };
+        
+        var myData = new Doc(coll);
         console.log(req.body, myData);
         myData.save()
         .then(item => { 

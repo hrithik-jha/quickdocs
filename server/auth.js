@@ -1,7 +1,13 @@
 const request       = require('request');
 const querystring   = require('querystring');
 
-module.exports = {
+let currUser = "";
+
+function sleep(millis) {
+    return new Promise(resolve => setTimeout(resolve, millis));
+}
+
+module.exports = { 
     insertCreds: function(user, pass) {
         var form = {
             user: user,
@@ -22,10 +28,13 @@ module.exports = {
             body: formData,
             method: 'POST'
             }, function (err, res, body) {
-            console.log(err);
+            if(err) {
+                console.log(err);
+            }
+            sleep(2000);
             response = body;
         });
-
+        console.log("Checking the time " + response);
         return response;
     },
 
@@ -49,10 +58,10 @@ module.exports = {
             body: formData,
             method: 'POST'
             }, function (err, res, body) {
-            responseReq = body;
             if(err) {
                 console.log(err);
             }
+            console.log(body);
         });
     }
     //console.log("Epic games " + responseReq);
