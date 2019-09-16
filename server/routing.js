@@ -62,6 +62,17 @@ module.exports = function(app) {
         res.sendFile(__dirname + "/static/" + "doc.html");
     });
 
+    app.get("/allDocs", (req, res) => {
+        Doc.find({}, function(err, users) {
+            var userMap = {};
+        
+            users.forEach(function(user) {
+              userMap[user._id] = user;
+            });
+            res.send(userMap);  
+        });
+    });
+
     app.get("/logout", (req, res) => {
         res.clearCookie("user");
         res.send("Logged out successfully.");
