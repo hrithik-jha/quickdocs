@@ -1,6 +1,11 @@
-form {
-    align-content: center;
-    margin-top: 20%;
+#doc {
+    width: 80%;
+    height: 470px;
+    margin: auto;
+    display: block;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: white;
 }
 
 #register-tag {
@@ -26,6 +31,25 @@ form {
 }
 
 #primary-button:hover {
+    border-color: #0051FF;
+    background-color: white;
+    color: #0051FF;
+}
+
+#primary-button1 {
+    border-style: solid;
+    border-color: #0051FF;
+    background-color: #0051FF;
+    font-size: 20px;
+    padding: 5px 10px 5px;
+    color: white;
+    border-radius: 3px;
+    margin: 20px;
+    margin-left: 10%;
+    display: block;
+}
+
+#primary-button1:hover {
     border-color: #0051FF;
     background-color: white;
     color: #0051FF;

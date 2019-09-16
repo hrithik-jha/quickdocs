@@ -54,11 +54,16 @@ module.exports = function(app) {
         res.send(Auth.insertCreds(usern, passw));
     });
 
+    app.get("/colab", (req, res) => {
+        res.sendFile(__dirname + "/static/" + "colab.html");
+    });
+
     app.get("/document", (req, res) => {
         res.sendFile(__dirname + "/static/" + "doc.html");
     });
 
     app.get("/logout", (req, res) => {
+        res.clearCookie("user");
         res.send("Logged out successfully.");
     });
 

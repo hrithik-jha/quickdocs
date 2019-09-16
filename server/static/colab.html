@@ -42,13 +42,15 @@
 
     <form method="POST" action="/document">
         <fieldset>
-            <textarea name="docs" id="doc">
+            <textarea name="docs" id="doc" onkeydown="emitChange()">
 
             </textarea>
             <input type="submit" formaction="/document" formmethod="POST" value="Save" id="primary-button1">
         </fieldset>
     </form>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
+    <script>var socket = io();</script>
+    <script src="colab.js"></script>
     <script>
         function loginName () {
             user = document.cookie;
