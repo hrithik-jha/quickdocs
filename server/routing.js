@@ -21,7 +21,12 @@ function trimmedCookie(user) {
 
 module.exports = function(app) {
     app.get("/", (req, res) => {
-        res.send("You at the base.");
+        if(trimmedCookie(req.headers.cookie)) {
+            res.redirect('/document');
+        }
+        else {
+            res.redirect('/login');
+        }
     });
 
     app.get("/login", (req, res) => {
@@ -59,18 +64,25 @@ module.exports = function(app) {
     });
 
     app.get("/document", (req, res) => {
-        res.sendFile(__dirname + "/static/" + "doc.html");
+        res.sendFile(__dirname + "/static/" + "files.html");
     });
 
     app.get("/allDocs", (req, res) => {
-        Doc.find({}, function(err, users) {
-            var userMap = {};
-        
-            users.forEach(function(user) {
-              userMap[user._id] = user;
+        var cook = String(req.headers.cookie);
+        var name = trimmedCookie(cook);
+        console.log(req.query.user + ' ' + name);
+        if(req.query.user == name) {
+            Doc.find({usern: name}, function(err, users) {
+                var userMap = {};
+                users.forEach(function(user) {
+                  userMap[user._id] = user;
+                });
+                res.send(userMap);  
             });
-            res.send(userMap);  
-        });
+        }
+        else {
+            res.send("Login please.");
+        }
     });
 
     app.get("/logout", (req, res) => {
