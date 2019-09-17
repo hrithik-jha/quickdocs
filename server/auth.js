@@ -38,7 +38,7 @@ module.exports = {
         return response;
     },
 
-    checkCreds: function(user, pass) {
+    checkCreds: async function(user, pass, callback) {
         var form = {
             user: user,
             pass: pass,
@@ -61,7 +61,10 @@ module.exports = {
             if(err) {
                 console.log(err);
             }
-            console.log(body);
+            else {
+                console.log(body);
+                //scallback(body == "200");
+            }
         });
     }
     //console.log("Epic games " + responseReq);

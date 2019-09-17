@@ -14,8 +14,9 @@ var source = $('#doc');
 //Emit Events
 function emitChange(){
     console.log("Just been called to change.");
+    var value = document.getElementById("doc").value;
     socket.emit('update', {
-        doc: "$('textarea').value",
+        doc: value,
         handle: usern
     });
     console.log("Emit MAX");
@@ -24,6 +25,6 @@ function emitChange(){
 //Listening to events
 socket.on('update', function(data){
     console.log("Catching emits.");
-    $('textarea').value = data.doc;
+    document.getElementById("doc").value = data.doc;
     console.log(data.doc);
 });

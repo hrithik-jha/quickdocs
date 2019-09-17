@@ -14,6 +14,9 @@ var Doc = require('./database');
 var Auth = require('./auth');
 
 function trimmedCookie(user) {
+    if(user == undefined) {
+        return '';
+    }
     var pos = user.indexOf("user=");
     var userString = user.substring(pos + 5, user.length);
     return userString;
@@ -35,16 +38,18 @@ module.exports = function(app) {
 
     app.post("/login", (req, res) => {
         //console.log(req.body.name + " " + req.body.pass);
-        var usern = req.body.usern;
-        var passw = req.body.passw;
+        var usern = String(req.body.usern);
+        var passw = String(req.body.passw);
         //var response = Auth.checkCreds(usern, passw);
 
         res.cookie("user", usern);
         console.log("Cookie creation done.");
         
         var cook = String(req.headers.cookie);
-        res.send(trimmedCookie(cook));
-        //var status = Auth.checkCreds(usern, passw);
+        Auth.checkCreds(usern, passw).then((value) => {
+            console.log("From checking side: " + value);
+            res.redirect('/document');
+        });
         //console.log(status);
     });
 
@@ -87,7 +92,8 @@ module.exports = function(app) {
 
     app.get("/logout", (req, res) => {
         res.clearCookie("user");
-        res.send("Logged out successfully.");
+        //res.send("Logged out successfully.");
+        res.redirect('/login');
     });
 
     app.post("/document", (req, res) => {
