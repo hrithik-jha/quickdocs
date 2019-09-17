@@ -12,6 +12,18 @@
     margin-top: 10%;
 }
 
+#file-card {
+    border-style: solid;
+    border-color: black;
+    height: 30%;
+    border-width: 1px;
+    background-color: white;
+    border-color: white;
+    margin: 10px;
+    border-radius: 5px;
+    padding: 5px;
+}
+
 #auth-form {
     margin-top: 20%;
     border-style: solid;

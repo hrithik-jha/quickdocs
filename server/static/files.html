@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
         crossorigin="anonymous">
     <!-- Latest compiled and minified JavaScript -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -18,7 +19,7 @@
     <link rel="stylesheet" type="text/css" href="./style.css" />
 </head>
 
-<body>
+<body ng-app="mApp" ng-controller="mCtrl">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">QuickDocs</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
@@ -40,6 +41,14 @@
         </div>
     </nav>
 
+    <div class="col-md-4" ng-repeat="doc in docs">
+        <div id="file-card">
+            Kowalski
+            {{2 + 2}}
+            {{doc.user}}
+        </div>
+    </div>
+
     <script>
         function loginName () {
             user = document.cookie;
@@ -59,6 +68,15 @@
         if(document.cookie) {
             changeHeader();
         }
+
+        var app = angular.module("mApp", []);
+        app.controller("mCtrl", function($scope, $http) {
+            $http.get("http://localhost:8000/alldocs?user=" + loginName())
+            .then(function(response) {
+                $scope.docs = response.data;
+                console.log($scope.docs);
+            });
+        })
     </script>
 </body>
 

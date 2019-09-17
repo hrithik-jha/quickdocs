@@ -12,9 +12,12 @@ var doc = $('#doc').value,
 
 var source = $('#doc');
 //Emit Events
-function emitChange(){
-    console.log("Just been called to change.");
-    var value = document.getElementById("doc").value;
+function emitChange() {
+    var value = document.getElementById('doc').value;
+    emission(usern, value);
+}
+
+function emission(usern, value){
     socket.emit('update', {
         doc: value,
         handle: usern
@@ -25,6 +28,6 @@ function emitChange(){
 //Listening to events
 socket.on('update', function(data){
     console.log("Catching emits.");
-    document.getElementById("doc").value = data.doc;
+    document.getElementById("doc").value += data.doc;
     console.log(data.doc);
 });
