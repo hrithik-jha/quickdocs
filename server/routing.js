@@ -124,12 +124,6 @@ module.exports = function(app) {
         });
     });
 
-    app.get('/getuser', (req, res)=>{ 
-        //shows all the cookies 
-        res.send(req.cookies); 
-        console.log(req.cookies);
-    });
-
     app.get("/forgot", (req, res) => {
         res.send("Forgot password?");
     });
