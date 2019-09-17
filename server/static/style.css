@@ -24,6 +24,7 @@
     border-radius: 5px;
     padding: 5px;
     display: inline-block;
+    width: 95%;
 }
 
 #file-card #user {

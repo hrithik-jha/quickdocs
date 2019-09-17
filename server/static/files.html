@@ -78,6 +78,11 @@
         }
 
         var app = angular.module("mApp", []);
+        var minutes = 1000 * 60;
+        var hours = minutes * 60;
+        var days = hours * 24;
+        var years = days * 365;
+        
         app.controller("mCtrl", function($scope, $http) {
             $http.get("http://localhost:8000/alldocs?user=" + loginName())
             .then(function(response) {
