@@ -6,6 +6,7 @@
     margin-top: 50px;
     border-style: solid;
     border-color: white;
+    padding: 25px;
 }
 
 #register-tag {
@@ -15,13 +16,23 @@
 #file-card {
     border-style: solid;
     border-color: black;
-    height: 30%;
+    /*height: 30%;*/
     border-width: 1px;
     background-color: white;
     border-color: white;
     margin: 10px;
     border-radius: 5px;
     padding: 5px;
+    display: inline-block;
+}
+
+#file-card #user {
+    font-size: 14px;
+    color: #FFABAB;
+}
+
+#file-card #content {
+    font-size: 18px;
 }
 
 #auth-form {
@@ -66,6 +77,16 @@
     border-color: #0051FF;
     background-color: white;
     color: #0051FF;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+a:hover {
+    text-decoration: none;
+    color: inherit;
 }
 
 #auth-form input {

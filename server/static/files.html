@@ -40,15 +40,23 @@
             </ul>
         </div>
     </nav>
-
-    <div class="col-md-4" ng-repeat="doc in docs">
-        <div id="file-card">
-            Kowalski
-            {{2 + 2}}
-            {{doc.user}}
+    <a href="/document?state=fresh"><button id="primary-button1" style="margin-left: 10px; display: inline-block;">New Document</button></a>
+    <a href="/colab"><button id="primary-button1" style="margin-left: 10px; display: inline-block;">Colab Document</button></a>
+    <div class="row">
+        <div class="col-md-4" ng-repeat="doc in docs">
+            <a ng-href="/document?state={{doc._id}}">
+                <div id="file-card">
+                    <span id="user">
+                        {{doc.usern}}
+                    </span>
+                    <br>
+                    <span id="content">
+                        {{doc.docs}}
+                    </span>
+                </div>
+            </a>
         </div>
     </div>
-
     <script>
         function loginName () {
             user = document.cookie;
@@ -76,7 +84,7 @@
                 $scope.docs = response.data;
                 console.log($scope.docs);
             });
-        })
+        });
     </script>
 </body>
 

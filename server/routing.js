@@ -69,7 +69,12 @@ module.exports = function(app) {
     });
 
     app.get("/document", (req, res) => {
-        res.sendFile(__dirname + "/static/" + "files.html");
+        if(req.query.state) {
+            res.sendFile(__dirname + "/static/" + "doc.html");
+        }
+        else {
+            res.sendFile(__dirname + "/static/" + "files.html");
+        }
     });
 
     app.get("/allDocs", (req, res) => {
@@ -112,7 +117,7 @@ module.exports = function(app) {
         console.log(req.body, myData);
         myData.save()
         .then(item => { 
-            res.send("Saved successfully");
+            res.redirect('/document');
         })
         .catch(err => {
             res.status(400).send("Unable to save file. Please try again.");
