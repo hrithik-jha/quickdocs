@@ -14,5 +14,6 @@ var docSchema = new mongoose.Schema ({
 });
 
 //var Doc = mongoose.model("Doc", docSchema);
+//try with async await PS: Naveen Kumar
 
 module.exports = mongoose.model("docs", docSchema); 
