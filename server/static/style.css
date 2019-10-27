@@ -99,6 +99,16 @@ a:hover {
     margin-left: 0px;
 }
 
+#sticky {
+    width: 80%;
+    margin: auto;
+    display: block;
+    margin-top: 50px;
+    border-style: solid;
+    border-color: white;
+    padding: 25px;
+}
+
 body {
     background-color: #FFABAB;
 }

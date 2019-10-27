@@ -28,6 +28,6 @@ function emission(usern, value){
 //Listening to events
 socket.on('update', function(data){
     console.log("Catching emits.");
-    document.getElementById("doc").value += data.doc;
+    //document.getElementById("doc").value += data.doc;
     console.log(data.doc);
 });
