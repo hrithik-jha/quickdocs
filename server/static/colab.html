@@ -42,14 +42,20 @@
     <div id="sticky">
         
     </div>
+    
     <form method="POST" action="/document">
         <fieldset>
             <textarea name="docs" id="doc" onkeydown="emitChange()">
 
             </textarea>
             <input type="submit" formaction="/document" formmethod="POST" value="Save" id="primary-button1">
-            <input type="button" onclick="createNode()"  value="Save" id="primary-button1">
+            <input type="button" onclick="createNode()"  value="Add Note" id="primary-button1">
         </fieldset>
+    </form>
+    <form action="http://localhost/php-practice/fileSave.php" method="post" enctype="multipart/form-data">
+        <span style="margin-left: 10%;">Select image to upload:</span>
+        <input type="file" name="fileToUpload" id="fileToUpload">
+        <input type="submit" value="Upload Image" name="submit" id="primary-button1">
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.dev.js"></script>
     <script>var socket = io();</script>
