@@ -1,5 +1,5 @@
 # Quickdocs
-An online real-time text editing software.
+An online real-time text editing software with a PHP authentication and file hosting. 
 
 ## Auth
 An auth server is set up using PHP and MySQL queried by Node.
@@ -9,7 +9,7 @@ Hosting and routing using Node.js. All documents saved with MongoDB.
 
 ## Instructions
 In the server folder, 
-Execute: node index.js
-It will start the server
-
-Paste the API folder files in the htdocs of your system for PHP microservices. It should be pasted without the API folder.
+Execute: `node index.js`
+It will start the server.
+To have auth and file sharing functionalities, start the PHP server.
+Paste the API folder files in the `xampp/htdocs` of your system for PHP microservices.
