@@ -1,5 +1,5 @@
 # Quickdocs
-An online real-time text editing software with a PHP authentication and file hosting. 
+An online real-time text editing software using Node.js with PHP for authentication and file hosting. 
 
 ## Auth
 An auth server is set up using PHP and MySQL queried by Node.
