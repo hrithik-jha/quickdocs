@@ -63,10 +63,8 @@ module.exports = {
             }
             else {
                 console.log(body);
-                //scallback(body == "200");
+                //callback(body == "200");
             }
         });
     }
-    //console.log("Epic games " + responseReq);
-    //return responseReq;
 }

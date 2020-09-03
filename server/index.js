@@ -11,7 +11,6 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.use(express.static(path.join(__dirname, 'static')));
 
 require('./routing')(app);
-//require('./cookie')(app);
 
 const port = 8000;
 

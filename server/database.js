@@ -13,6 +13,4 @@ var docSchema = new mongoose.Schema ({
     time: String,
 });
 
-//var Doc = mongoose.model("Doc", docSchema);
-
 module.exports = mongoose.model("docs", docSchema); 

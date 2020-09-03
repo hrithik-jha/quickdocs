@@ -50,7 +50,6 @@ module.exports = function(app) {
             console.log("From checking side: " + value);
             res.redirect('/document');
         });
-        //console.log(status);
     });
 
     app.get("/register", (req, res) => {
@@ -58,7 +57,6 @@ module.exports = function(app) {
     });
 
     app.post("/register", (req, res) => {
-        //console.log(req.body.name + " " + req.body.pass);
         var usern = req.body.usern;
         var passw = req.body.passw;
         res.send(Auth.insertCreds(usern, passw));
@@ -97,7 +95,6 @@ module.exports = function(app) {
 
     app.get("/logout", (req, res) => {
         res.clearCookie("user");
-        //res.send("Logged out successfully.");
         res.redirect('/login');
     });
 
